@@ -19,11 +19,41 @@
     padding: 20px 0;
     background-color: #181848;
     color: #fff;
-
 }
 
 .score {
     width : 200px;
     background-color: #fff;
-    margin : 20px;
+    margin-bottom : 20px;
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+    height: 200px;
+}
+
+.playerHand,
+.computerHand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.resultsWinner {
+    font-size: 24px;
+    color: #ffff;
+
+}
+
+.resultsMessage{
+    color: #ffff;
+    
 }
