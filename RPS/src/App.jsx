@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import {FaRegHandPaper, FaRegHandRock, FaRegHandScissors} from 'react-icons/fa';
 import styles from './App.module.css';
 
 function App() {
@@ -26,14 +25,18 @@ function App() {
       
       </div>
       <div className={styles.results}>
-        <div className={styles.playerHand}>
+        <div className={styles.playerRock}>
+          <FaRegHandPaper size={60}/>
+          <p>Rock</p>
+        </div>  
         <div classname={styles.midCol}>
-          <p>Winner:: Player</p>
+          <p classname={styles.resultsWinner} >Winner:: Player</p>
+          <p classname={styles.resultsMessage} >Rock beats scissors:: Player</p>
           <p>Rock beats scissors</p>
         </div>
-        </div>
-        <div className={styles.computerHand}>
-          
+        <div className={styles.computerRock}>
+          <FaRegHandPaper size={60}/>
+          <p>Rock</p>
         </div>
       </div>
     </div>
