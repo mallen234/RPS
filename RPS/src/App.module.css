@@ -8,3 +8,22 @@
     padding: 20px;
     margin-bottom: 50px;
 }
+
+.scoreCtn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scoreCtn h3 {
+    margin-top: 0;
+    padding: 20px 0;
+    background-color: #181848;
+    color: #fff;
+
+}
+
+.score {
+    width : 200px;
+    background-color: #fff;
+    margin : 20px;
+}
