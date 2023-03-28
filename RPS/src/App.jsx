@@ -13,7 +13,31 @@ function App() {
         <h1>ROCK, PAPER, SCISSORS</h1>
         <p>React Game!</p>
       </div>
+      <div className={styles.scoreCtn}>
+        <div className={styles.score}>
+          <h3>Player</h3>
+          <p>Score: 0</p>
+        </div>
+        <div className={styles.score}>
+          <h3>Computer</h3>
+          <p>Score: 0</p>
+
+        </div>
+      
+      </div>
+      <div className={styles.results}>
+        <div className={styles.playerHand}>
+        <div classname={styles.midCol}>
+          <p>Winner:: Player</p>
+          <p>Rock beats scissors</p>
+        </div>
+        </div>
+        <div className={styles.computerHand}>
+          
+        </div>
+      </div>
     </div>
+    
   )
 }
 
