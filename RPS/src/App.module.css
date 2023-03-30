@@ -89,3 +89,12 @@
 .bounce:hover {
     transform: translateY(-15px);
 }
+
+.activeChoice {
+    background-color: orange;
+}
+
+.timer {
+    color: #fff;
+    font-size: 200px;
+}
