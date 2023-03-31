@@ -66,8 +66,9 @@ function App() {
       </div>
       <div className={styles.results}>
         <div className={styles.playerHand}>
-          {options[playerHand].icon}
-          <p>{options[playerHand].name}</p>
+          {runTimer && <div className={styles.playerShake}>{options[0].icon} </div>}
+          {/* {options[playerHand].icon}
+          <p>{options[playerHand].name}</p> */}
         </div>  
         
         <div className={styles.midCol}>
@@ -77,8 +78,9 @@ function App() {
         </div>
         
         <div className={styles.computerHand}>
-          {options[computerHand].icon}
-          <p>{options[computerHand].name}</p>
+        {runTimer && <div className={styles.computerShake}>{options[0].icon} </div>}
+          {/* {options[computerHand].icon}
+          <p>{options[computerHand].name}</p> */}
         </div>
       </div>
       <div className={styles.choiceBtnCtn}>

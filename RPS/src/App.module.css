@@ -98,3 +98,35 @@
     color: #fff;
     font-size: 200px;
 }
+
+.computerShake{
+    animation: computerShakeAnimation 0.8s ease-in-out infinite;
+}
+
+@keyframes computerShakeAnimation{
+    0%,
+    100% {
+        transform: scaleY(-1) rotate(280deg);
+    }
+
+    50% {
+        transform:  scaleY(-1) rotate(260deg);
+    }
+
+}
+
+.playerShake{
+    animation: playerShakeAnimation 0.8s ease-in-out infinite;
+}
+
+@keyframes playerShakeAnimation{
+    0%,
+    100% {
+        transform: scaleY(1) rotate(100deg);
+    }
+
+    50% {
+        transform: rotate(80deg);
+    }
+
+}
