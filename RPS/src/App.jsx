@@ -11,6 +11,15 @@ function App() {
   const [computerHand, setComputerHand] = useState(0);
   const [timer, setTimer] = useState(3);
   const [runTimer, setRunTimer] = useState(false);
+  const [results, setResults] = useState({
+    winner: '',
+    message: '',
+  });
+
+  const [score, setScore] = useState({
+    player: 0,
+    computer: 0,
+  })
 
   useEffect(() => {
     if(runTimer && timer > 0) {
@@ -20,6 +29,7 @@ function App() {
     } else if (runTimer && timer < 1){
       setRunTimer(false);
       setTimer(3);
+      play();
     }
   }, [runTimer, timer]);
 
@@ -31,22 +41,61 @@ function App() {
   ]
 
   const selectOption = (handIndex) => {
+    setResults({winner: '',message: ''});
     setPlayerHand(handIndex);
   }
 
   const generateComputerHand = () => {
     const randomNumber = Math.floor(Math.random() * 3);
-    console.log("random",randomNumber)
-    setComputerHand(randomNumber)
+    // console.log("random",randomNumber);
+    setComputerHand(randomNumber);
   }
 
   const start = () => {
+    setResults({winner: '',message: ''});
     setRunTimer(true);
     generateComputerHand();
   };
 
+  const play = () => {
+    // console.log('PLaying');
+    if (options[playerHand].name === options[computerHand].name ) {
+      setResults({winner: 'No one', message: 'We have a draw'});
+    }
+    else if (options[playerHand].name === 'rock' && options[computerHand].name === 'paper') {
+      setResults({winner: 'Computer', message: 'Paper beats Rock'});
+      setScore({player: score.player, computer: score.computer+1})
+    }
+    else if (options[playerHand].name === 'rock' && options[computerHand].name === 'scissors') {
+      setResults({winner: 'Player', message: 'Rock beats Scissors'});
+      setScore({player: score.player+1, computer: score.computer})
+
+    }
+    else if (options[playerHand].name === 'paper' && options[computerHand].name === 'rock') {
+      setResults({winner: 'Player', message: 'Paper beats Rock'});
+      setScore({player: score.player+1, computer: score.computer})
+    }
+    else if (options[playerHand].name === 'paper' && options[computerHand].name === 'scissors') {
+      setResults({winner: 'Computer', message: 'Scissors beats Paper'});
+      setScore({player: score.player, computer: score.computer+1})
+
+    }
+    else if (options[playerHand].name === 'scissors' && options[computerHand].name === 'rock') {
+      setResults({winner: 'Computer', message: 'Rock beats Scissors'});
+      setScore({player: score.player, computer: score.computer+1})
+
+    }
+    else if (options[playerHand].name === 'scissors' && options[computerHand].name === 'paper') {
+      setResults({winner: 'Player', message: 'Scissors beats Paper'});
+      setScore({player: score.player+1, computer: score.computer})
+
+    }
+    
+
+  };
+
   console.log("ComputerHand",computerHand);
-  console.log("PlayerHand",playerHand);
+  // console.log("PlayerHand",playerHand);
 
   return (
     <div className={styles.container}>
@@ -57,30 +106,48 @@ function App() {
       <div className={styles.scoreCtn}>
         <div className={styles.score}>
           <h3>Player</h3>
-          <p>Score: 0</p>
+          <p>Score: {score.player}</p>
         </div>
         <div className={styles.score}>
           <h3>Computer</h3>
-          <p>Score: 0</p>
+          <p>Score: {score.computer}</p>
         </div>
       </div>
       <div className={styles.results}>
-        <div className={styles.playerHand}>
+        <div className={`${styles.playerHand} ${results.winner === 'Player' ? styles.winnerAnimation : ''}`}>
           {runTimer && <div className={styles.playerShake}>{options[0].icon} </div>}
-          {/* {options[playerHand].icon}
-          <p>{options[playerHand].name}</p> */}
+          
+          {results?.winner && (
+            <>
+              {options[playerHand].icon}
+              <p>{options[playerHand].name}</p>
+            </>
+
+          )}
+          
         </div>  
         
         <div className={styles.midCol}>
           {runTimer && <p className={styles.timer}> {timer} </p>}
-          {/* <p className={styles.resultsWinner}> Winner: Player</p>
-          <p className={styles.resultsMessage}> Rock beats scissors</p> */}
+          
+          {results?.winner && (
+            <>
+              <p className={styles.resultsWinner}> Winner: {results.winner}</p>
+              <p className={styles.resultsMessage}> {results.message}</p>
+            </>
+          )}
+          
         </div>
         
-        <div className={styles.computerHand}>
+        <div className={`${styles.computerHand} ${results.winner === 'Computer' ? styles.winnerAnimation : ''}`}>
         {runTimer && <div className={styles.computerShake}>{options[0].icon} </div>}
-          {/* {options[computerHand].icon}
-          <p>{options[computerHand].name}</p> */}
+        {results?.winner && (
+            <>
+              {options[computerHand].icon}
+              <p>{options[computerHand].name}</p>
+            </>
+          )}
+          
         </div>
       </div>
       <div className={styles.choiceBtnCtn}>
